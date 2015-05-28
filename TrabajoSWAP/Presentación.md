@@ -60,24 +60,38 @@ Ahora se clonan las máquinas virtuales. Hay que cambiar el hostname de las nuev
 
 ###MDT/MGS
 Con la siguiente orden creamos un ZPool de ZFS, configurándolo como mirror y le asignamos funciones de MDT y MGS.  
+
 mkfs.lustre --mdt --mgs --index=0 --fsname=meta --backfstype=zfs lustre-mgs/mgs /dev/md127 lustre-mdt/mdt /dev/md127
 
-Modificamos cierto fichero...
+####Modificamos /etc/ldev.conf
+Tenemos que añadir líneas según los componentes de lustre que haya en el servidor local.
+El formato es:
+
+hostname  - label zpool
+
+donde hostname es cómo se llama nuestro servidor en la red. Label es fs-MDTxxxx, si es MDT, fs-OSTxxxx, si es un componente OST donde xxxx es el íncice asignado y fs es el nombre que hemos dado a nuestro sistema de archivos, en mi caso lustre.
+
+En este caso quedaría una única línea:
+servidor - lustre-MDT0000 lustre-mdt/mdt
 
 Activamos el servicio LUSTRE. Si todo funciona bien, nos debería decir como salida que se ha montado correctamente.
 service lustre start 
 
 ###OSS/OST
 Con la siguiente orden creamos un ZPool de ZFS, configurándolo como mirror y le asignamos función de OST.
-En la opción --mgsnode hay que decirle la ubicación IP en la red LUSTRE del sistema MGS que estará encargado de gestionarle.
+En la opción --mgsnode hay que decirle la ubicación IP en la red LUSTRE del sistema MGS que estará encargado de gestionarlo.
+
 mkfs.lustre --ost --index=1 --fsname=lustre --backfstype=zfs --device-size=8388608 --mgsnode=192.168.1.5@tcp  lustre-ost/ost0 /dev/md127
 
 Igual que antes:
-Modificamos cierto fichero...
-
+Modificamos /etc/ldev.conf con el mismo formato.
+servidor - lustre-MDT0000 lustre-mdt/mdt
 Activamos el servicio LUSTRE. Si todo funciona bien, nos debería decir como salida que se ha montado correctamente.
 service lustre start 
 
 ##Bibliografía
 http://zfsonlinux.org/
+
 http://warpmech.com/?news=tutorial-getting-started-with-lustre-over-zfs
+
+http://zfsonlinux.org/lustre-configure-single.html
