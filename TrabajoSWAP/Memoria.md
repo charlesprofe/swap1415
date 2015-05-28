@@ -43,6 +43,26 @@ yum install kernel-devel zfs```
 ```yum install lustre
 yum install lustre-osd-zfs```
 
+mkdir ./lustreinstall
+
+printf "https://build.hpdd.intel.com/job/lustre-master/arch=x86_64,build_type=server,distro=el6.6,ib_stack=inkernel/lastStableBuild/artifact/artifacts/RPMS/x86_64/kernel-2.6.32-504.16.2.el6_lustre.ge2556aa.x86_64.rpm\n
+https://build.hpdd.intel.com/job/lustre-master/arch=x86_64,build_type=server,distro=el6.6,ib_stack=inkernel/lastStableBuild/artifact/artifacts/RPMS/x86_64/kernel-firmware-2.6.32-504.16.2.el6_lustre.ge2556aa.x86_64.rpm\n
+https://build.hpdd.intel.com/job/lustre-master/arch=x86_64,build_type=server,distro=el6.6,ib_stack=inkernel/lastStableBuild/artifact/artifacts/RPMS/x86_64/lustre-2.7.54-2.6.32_504.16.2.el6_lustre.ge2556aa.x86_64_gc19992e.x86_64.rpm\n
+https://build.hpdd.intel.com/job/lustre-master/arch=x86_64,build_type=server,distro=el6.6,ib_stack=inkernel/lastStableBuild/artifact/artifacts/RPMS/x86_64/lustre-modules-2.7.54-2.6.32_504.16.2.el6_lustre.ge2556aa.x86_64_gc19992e.x86_64.rpm\n
+https://build.hpdd.intel.com/job/lustre-master/arch=x86_64,build_type=server,distro=el6.6,ib_stack=inkernel/lastStableBuild/artifact/artifacts/RPMS/x86_64/lustre-tests-2.7.54-2.6.32_504.16.2.el6_lustre.ge2556aa.x86_64_gc19992e.x86_64.rpm\n
+https://build.hpdd.intel.com/job/lustre-master/arch=x86_64,build_type=server,distro=el6.6,ib_stack=inkernel/lastStableBuild/artifact/artifacts/RPMS/x86_64/lustre-osd-ldiskfs-2.7.54-2.6.32_504.16.2.el6_lustre.ge2556aa.x86_64_gc19992e.x86_64.rpm\n
+https://build.hpdd.intel.com/job/lustre-master/arch=x86_64,build_type=server,distro=el6.6,ib_stack=inkernel/lastStableBuild/artifact/artifacts/RPMS/x86_64/lustre-osd-ldiskfs-mount-2.7.54-2.6.32_504.16.2.el6_lustre.ge2556aa.x86_64_gc19992e.x86_64.rpm\n
+https://build.hpdd.intel.com/job/e2fsprogs-master/arch=x86_64,distro=el6/lastStableBuild/artifact/_topdir/RPMS/x86_64/e2fsprogs-1.42.12.wc1-7.el6.x86_64.rpm\n
+https://build.hpdd.intel.com/job/e2fsprogs-master/arch=x86_64,distro=el6/lastStableBuild/artifact/_topdir/RPMS/x86_64/e2fsprogs-libs-1.42.12.wc1-7.el6.x86_64.rpm\n
+https://build.hpdd.intel.com/job/e2fsprogs-master/arch=x86_64,distro=el6/lastStableBuild/artifact/_topdir/RPMS/x86_64/libss-1.42.12.wc1-7.el6.x86_64.rpm\n
+https://build.hpdd.intel.com/job/e2fsprogs-master/arch=x86_64,distro=el6/lastStableBuild/artifact/_topdir/RPMS/x86_64/libcom_err-1.42.12.wc1-7.el6.x86_64.rpm" > ./download
+
+wget -i ./download
+
+
+
+
+
 Como LUSTRE no forma parte de la política SELinux, hay que desactivar SELinux en /etc/selinux/config, poniendo la opción correspondiente a disable.
 
 ####Desactivamos las tablas IP puesto que tendríamos que configurar el cortafuegos.
