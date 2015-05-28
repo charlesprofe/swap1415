@@ -43,7 +43,7 @@ yum install kernel-devel zfs```
 ```yum install lustre
 yum install lustre-osd-zfs```
 
-mkdir ./lustreinstall
+```mkdir ./lustreinstall
 
 printf "https://build.hpdd.intel.com/job/lustre-master/arch=x86_64,build_type=server,distro=el6.6,ib_stack=inkernel/lastStableBuild/artifact/artifacts/RPMS/x86_64/kernel-2.6.32-504.16.2.el6_lustre.ge2556aa.x86_64.rpm\n
 https://build.hpdd.intel.com/job/lustre-master/arch=x86_64,build_type=server,distro=el6.6,ib_stack=inkernel/lastStableBuild/artifact/artifacts/RPMS/x86_64/kernel-firmware-2.6.32-504.16.2.el6_lustre.ge2556aa.x86_64.rpm\n
@@ -58,8 +58,7 @@ https://build.hpdd.intel.com/job/e2fsprogs-master/arch=x86_64,distro=el6/lastSta
 https://build.hpdd.intel.com/job/e2fsprogs-master/arch=x86_64,distro=el6/lastStableBuild/artifact/_topdir/RPMS/x86_64/libcom_err-1.42.12.wc1-7.el6.x86_64.rpm" > ./download
 
 wget -i ./download
-
-
+```
 
 
 
