@@ -35,25 +35,25 @@ Cabe destacar que permite definir Pools, es decir, agrupaciones de discos a nive
 Actualmente LUSTRE trabaja mejor con distribuciones de Red Hat. El soporte a CentOS 7 aún no está disponible así que se instalará en CentOS 6.6. Todas las operaciones se harán a nivel de superusuario.
 
 ####Intalamos el repositorio EPEL
-yum localinstall --nogpgcheck https://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+```yum localinstall --nogpgcheck https://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm```
 ####Y el sistema de ficheros ZFS
-yum localinstall --nogpgcheck http://archive.zfsonlinux.org/epel/zfs-release.el6.noarch.rpm
-yum install kernel-devel zfs
+```yum localinstall --nogpgcheck http://archive.zfsonlinux.org/epel/zfs-release.el6.noarch.rpm
+yum install kernel-devel zfs```
 ####Ahora instalamos LUSTRE
-yum install lustre
-yum install lustre-osd-zfs
+```yum install lustre
+yum install lustre-osd-zfs```
 
 Como LUSTRE no forma parte de la política SELinux, hay que desactivar SELinux en /etc/selinux/config, poniendo la opción correspondiente a disable.
 
 ####Desactivamos las tablas IP puesto que tendríamos que configurar el cortafuegos.
-chkconfig iptables off ; chkconfig ip6tables off
-service iptables stop ; service ip6tables stop
+```chkconfig iptables off ; chkconfig ip6tables off
+service iptables stop ; service ip6tables stop```
 
 #####Configuramos la red interna para conectarse con otras máquinas. 
 Necesitan una conexión activa y visible para el siguiente paso.
 
-echo “options lnet networks=tcp0(eth1)” >> /etc/modprobe.d/lustre.conf    
-para decirle a lustre que utilice eth1 (la red interna) para comunicarse.
+```echo “options lnet networks=tcp0(eth1)” >> /etc/modprobe.d/lustre.conf    
+para decirle a lustre que utilice eth1 (la red interna) para comunicarse.```
 
 ####Clonado de máquinas virtuales y posterior configuración
 Ahora se clonan las máquinas virtuales. Hay que cambiar el hostname de las nuevas máquinas, su IP interna y algún que otro cambio menor.
@@ -61,7 +61,7 @@ Ahora se clonan las máquinas virtuales. Hay que cambiar el hostname de las nuev
 ###MDT/MGS
 Con la siguiente orden creamos un ZPool de ZFS, configurándolo como mirror y le asignamos funciones de MDT y MGS.  
 
-mkfs.lustre --mdt --mgs --index=0 --fsname=meta --backfstype=zfs lustre-mgs/mgs /dev/md127 lustre-mdt/mdt /dev/md127
+```mkfs.lustre --mdt --mgs --index=0 --fsname=meta --backfstype=zfs lustre-mgs/mgs /dev/md127 lustre-mdt/mdt /dev/md127```
 
 ####Modificamos /etc/ldev.conf
 Tenemos que añadir líneas según los componentes de lustre que haya en el servidor local.
@@ -72,7 +72,7 @@ hostname  - label zpool
 donde hostname es cómo se llama nuestro servidor en la red. Label es fs-MDTxxxx, si es MDT, fs-OSTxxxx, si es un componente OST donde xxxx es el íncice asignado y fs es el nombre que hemos dado a nuestro sistema de archivos, en mi caso lustre.
 
 En este caso quedaría una única línea:
-servidor - lustre-MDT0000 lustre-mdt/mdt
+```servidor - lustre-MDT0000 lustre-mdt/mdt```
 
 Activamos el servicio LUSTRE. Si todo funciona bien, nos debería decir como salida que se ha montado correctamente.
 service lustre start 
@@ -81,11 +81,11 @@ service lustre start
 Con la siguiente orden creamos un ZPool de ZFS, configurándolo como mirror y le asignamos función de OST.
 En la opción --mgsnode hay que decirle la ubicación IP en la red LUSTRE del sistema MGS que estará encargado de gestionarlo.
 
-mkfs.lustre --ost --index=1 --fsname=lustre --backfstype=zfs --device-size=8388608 --mgsnode=192.168.1.5@tcp  lustre-ost/ost0 /dev/md127
+```mkfs.lustre --ost --index=1 --fsname=lustre --backfstype=zfs --device-size=8388608 --mgsnode=192.168.1.5@tcp  lustre-ost/ost0 /dev/md127```
 
 Igual que antes:
 Modificamos /etc/ldev.conf con el mismo formato.
-servidor - lustre-MDT0000 lustre-mdt/mdt
+```servidor - lustre-MDT0000 lustre-mdt/mdt```
 Activamos el servicio LUSTRE. Si todo funciona bien, nos debería decir como salida que se ha montado correctamente.
 service lustre start 
 
