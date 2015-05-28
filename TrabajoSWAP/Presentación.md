@@ -32,3 +32,52 @@ Es común en sistemas de LUSTRE utilizar ZFS como sistema de ficheros subyacente
 Cabe destacar que permite definir Pools, es decir, agrupaciones de discos a nivel de software que permite gestionarlas como uno solo. Así se pueden hacer RAID y otro tipo de agrupaciones comunes.
 
 ##Instalando LUSTRE
+Actualmente LUSTRE trabaja mejor con distribuciones de Red Hat. El soporte a CentOS 7 aún no está disponible así que se instalará en CentOS 6.6. Todas las operaciones se harán a nivel de superusuario.
+
+####Intalamos el repositorio EPEL
+yum localinstall --nogpgcheck https://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+####Y el sistema de ficheros ZFS
+yum localinstall --nogpgcheck http://archive.zfsonlinux.org/epel/zfs-release.el6.noarch.rpm
+yum install kernel-devel zfs
+####Ahora instalamos LUSTRE
+yum install lustre
+yum install lustre-osd-zfs
+
+Como LUSTRE no forma parte de la política SELinux, hay que desactivar SELinux en /etc/selinux/config, poniendo la opción correspondiente a disable.
+
+####Desactivamos las tablas IP puesto que tendríamos que configurar el cortafuegos.
+chkconfig iptables off ; chkconfig ip6tables off
+service iptables stop ; service ip6tables stop
+
+#####Configuramos la red interna para conectarse con otras máquinas. 
+Necesitan una conexión activa y visible para el siguiente paso.
+
+echo “options lnet networks=tcp0(eth1)” >> /etc/modprobe.d/lustre.conf    
+para decirle a lustre que utilice eth1 (la red interna) para comunicarse.
+
+####Clonado de máquinas virtuales y posterior configuración
+Ahora se clonan las máquinas virtuales. Hay que cambiar el hostname de las nuevas máquinas, su IP interna y algún que otro cambio menor.
+
+###MDT/MGS
+Con la siguiente orden creamos un ZPool de ZFS, configurándolo como mirror y le asignamos funciones de MDT y MGS.  
+mkfs.lustre --mdt --mgs --index=0 --fsname=meta --backfstype=zfs lustre-mgs/mgs /dev/md127 lustre-mdt/mdt /dev/md127
+
+Modificamos cierto fichero...
+
+Activamos el servicio LUSTRE. Si todo funciona bien, nos debería decir como salida que se ha montado correctamente.
+service lustre start 
+
+###OSS/OST
+Con la siguiente orden creamos un ZPool de ZFS, configurándolo como mirror y le asignamos función de OST.
+En la opción --mgsnode hay que decirle la ubicación IP en la red LUSTRE del sistema MGS que estará encargado de gestionarle.
+mkfs.lustre --ost --index=1 --fsname=lustre --backfstype=zfs --device-size=8388608 --mgsnode=192.168.1.5@tcp  lustre-ost/ost0 /dev/md127
+
+Igual que antes:
+Modificamos cierto fichero...
+
+Activamos el servicio LUSTRE. Si todo funciona bien, nos debería decir como salida que se ha montado correctamente.
+service lustre start 
+
+##Bibliografía
+http://zfsonlinux.org/
+http://warpmech.com/?news=tutorial-getting-started-with-lustre-over-zfs
