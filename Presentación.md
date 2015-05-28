@@ -20,9 +20,15 @@ Se componen de MGS (ManaGemet Server) y MDT (MetaData Target).
 El MDS gestiona un punto de acceso al cliente. Es el que se encarga de recibir la petición del cliente y procesarla.
 El MDT es el encargado de guardar los metadatos propiamente dichos para ponerlos a disposición del MDS.
 
-##OSS
+###OSS
 Un Object Storage Server es el encargado de almacenar los archivos. Actúan bajo demanda del MDS asociado y sirven en corresponencia sin tener que preocuparse de nada sobre cosas como los permisos, buscar el archivo, etc.
 
 Se compone de OSS y OST.
 El OSS recibe la petición del MGS y la transforma en una petición a uno de sus OST (puede haber varios OST asociados a un único OSS)
 
+##ZFS
+Es común en sistemas de LUSTRE utilizar ZFS como sistema de ficheros subyacente. Esto es debido a que permite gestionar gran cantidad de datos de forma eficiente y fácil.
+
+Cabe destacar que permite definir Pools, es decir, agrupaciones de discos a nivel de software que permite gestionarlas como uno solo. Así se pueden hacer RAID y otro tipo de agrupaciones comunes.
+
+##Instalando LUSTRE
