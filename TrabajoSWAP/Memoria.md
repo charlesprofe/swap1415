@@ -24,7 +24,7 @@ El MDT es el encargado de guardar los metadatos propiamente dichos para ponerlos
 Un Object Storage Server es el encargado de almacenar los archivos. Actúan bajo demanda del MDS asociado y sirven en corresponencia sin tener que preocuparse de nada sobre cosas como los permisos, buscar el archivo, etc.
 
 Se compone de OSS y OST.
-El OSS recibe la petición del MGS y la transforma en una petición a uno de sus OST (puede haber varios OST asociados a un único OSS)
+El OSS recibe la petición del MGS y la transforma en una petición a uno de sus OST (puede haber varios OST asociados a un único OSS) y la sirve directamente al cliente.
 
 ##ZFS
 Es común en sistemas de LUSTRE utilizar ZFS como sistema de ficheros subyacente. Esto es debido a que permite gestionar gran cantidad de datos de forma eficiente y fácil.
