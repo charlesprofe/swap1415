@@ -12,7 +12,7 @@ Estas características hacen que sean muy utilizados en supercomputadores (much�
 ##¿De qué se compone LUSTRE?
 
 Las componentes del sistema LUSTRE se distribuyen para evitar los cuellos de botella.
-
+![img](https://wiki.hpdd.intel.com/download/attachments/6586950/basic_layout.png?version=5&modificationDate=1304324082000&api=v2)
 ###MDS
 Un MetaData Server es el encargado de gestionar los metadatos de los archivos, es decir: los permisos, la ubicación, las propiedades, etc.
 
@@ -55,8 +55,12 @@ Necesitan una conexión activa y visible para el siguiente paso.
 ```echo “options lnet networks=tcp0(eth1)” >> /etc/modprobe.d/lustre.conf    
 para decirle a lustre que utilice eth1 (la red interna) para comunicarse.```
 
-####Clonado de máquinas virtuales y posterior configuración
-Ahora se clonan las máquinas virtuales. Hay que cambiar el hostname de las nuevas máquinas, su IP interna y algún que otro cambio menor.
+####Clonado de máquinas virtuales y/o posterior configuración
+Hasta aquí la configuración de los servidores es común. Ahora se clonan las máquinas virtuales. Hay que cambiar el hostname de las nuevas máquinas, su IP interna y algún que otro cambio menor.
+
+Se debe modificar
+/etc/sysconfig/network-scripts/ifcfg-ethx
+Añadiendo la IP de cada servidor y poniendo protocolo a none y otros cambios para que funcione la red interna para todos los servidores simultáneamente. Hay que cambiar la MAC en caso de que no lo haya detectado el clonado.
 
 ###MDT/MGS
 Con la siguiente orden creamos un ZPool de ZFS, configurándolo como mirror y le asignamos funciones de MDT y MGS.  
