@@ -6,4 +6,4 @@
 3. Depende de la cantidad de configuración inicial que quieras hacer.
 4. Depende de la cantidad de peticiones que se prevea que habrá en un futuro y del presupuesto de la empresa.
 
-Respuesta correcta: *4*
+Respuesta correcta: **4**
