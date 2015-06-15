@@ -16,8 +16,8 @@ Vamos a clonar la máquina virtual dos veces. Reiniciaremos las MAC. La original
 Hay que volver a configurar la conexión interna en ```/etc/network/interfaces``` cambiando la IP.
 En mi caso a los servidores les asignaré IP de la forma 192.168.1.2x (192.168.1.21 y 192.168.1.22)
 Hay que tener en cuenta que, al reiniciar las MAC, las conexiones de la máquina antigua pueden no funcionar y las nuevas llamarse eth2 y eth3.
-Esto se puede comprobar en ifconfig.
+Esto se puede comprobar utilizando ```ifconfig```.
 
-Si ese es el caso vamos a y borramos todo el contenido.
+Si ese es el caso vamos ```/etc/udev/rules.d/70-persistent-net.rules``` a y borramos todo el contenido. Reiniciamos para que se vuelva a configurar bien.
 
 Y ya está. Aquí está la screenshot de lo pedido en el guión.
