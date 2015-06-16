@@ -30,3 +30,24 @@ Desde el cliente se puede ver que el servidor 1 atiende el doble de peticiones q
 ![Probando Nginx con pesos (Cliente)](/Practicas/IMG/P3/prueba_weighted.png)
 
 ##HAPROXY
+Es otro software válido para hacer balanceadores de carga. En este caso no es servidor web, sino que es más especializado.
+Lo instalamos con ```apt-get install haproxy```
+![Instalando Haproxy](Practicas/IMG/P3/haproxy/instalandohap.png)
+
+Ahora toca configurarlo, lo haremos como en la imagen:
+![Instalando Haproxy](/Practicas/IMG/P3/haproxy/configurando%20hap.png)
+
+Y probamos si funciona
+
+![Bind Socket](/Practicas/IMG/P3/haproxy/error%20couldnt%20bind%20socket.png)
+
+Pero, como podemos ver, no nos deja asignarle el puerto 80. Esto es debido a que tenemos Apache corriendo actualmente, así que lo desactivamos.
+
+![Desactivando Apache](/Practicas/IMG/P3/haproxy/apache_desactivado.png)
+
+Y, tras eso, funciona.
+
+Desde el punto de vista del cliente:
+
+![Prueba Haproxy](/Practicas/IMG/P3/haproxy%20funciona.png)
+
