@@ -4,13 +4,18 @@ En esta práctica he preparado las máquinas para su posterior uso. Para ello he
 Se crea la primera máquina. Hay que añadir una nueva conexión de red interna a la que llamaré "swap".
 Se  inserta la iso de UbuntuServer y se inicia. La instalación es muy sencilla.
 ![Instalando...](/Practicas/IMG/P1/instalacion.png)
+
 El punto al que más hay que prestar atención es el siguiente, en el que debemos elegir LAMP y openSSH
 ![Instalación LAMP y openSSH](/Practicas/IMG/P1/instalacionLAMP.png)
+
 Se reinicia cuando lo pide y continuamos añadiendo la contraseña de root, pues las prácticas las haré, en su mayoría, como root.
 
 Instalamos curl, pues será necesario.
+
 ![Instalación curl](/Practicas/IMG/P1/curl.png)
-Configuramos la conexión interna en ```/etc/network/interfaces```
+
+Configuramos la conexión interna en ```/etc/network/interfaces``` añadiendo la IP, la puerta de enlace y la máscara subred para eth1 (en mi caso)
+
 ###Clonados
 Vamos a clonar la máquina virtual dos veces. Reiniciaremos las MAC. La original la guardaremos y la utilizaremos, si acaso, como cliente, pero se conserva por si hay que hacer más copias de servidores.
 Hay que volver a configurar la conexión interna en ```/etc/network/interfaces``` cambiando la IP.
@@ -21,3 +26,4 @@ Esto se puede comprobar utilizando ```ifconfig```.
 Si ese es el caso vamos ```/etc/udev/rules.d/70-persistent-net.rules``` a y borramos todo el contenido. Reiniciamos para que se vuelva a configurar bien.
 
 Y ya está. Aquí está la screenshot de lo pedido en el guión.
+![Comprobación](/Practicas/IMG/P1/comprobacion.png)
