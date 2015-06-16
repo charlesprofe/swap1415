@@ -2,7 +2,7 @@
 En esta práctica vamos a ver el rendimiento de los servidores.
 Voy a utilizar las 2 herramientas del guión (Apache Benchmark y Siege) y una adicional (OpenWebLoad)
 En los servidores, modifica index de acuerdo a esta imagen:
-![Pagina Prueba](/)
+![Pagina Prueba](/Practicas/IMG/P4/pagina_test.png)
 
 La IP de los servidores individuales en este caso es 192.168.1.21 y 192.168.1.22 y la de los balanceadores es 192.168.1.11 para nginx y 192.168.1.12 para haproxy.
 ##Apache Benchmark
