@@ -46,10 +46,10 @@ Para ello modificamos el fichero crontab en el que están las ejecuciones perió
 
 Para comprobar que funciona, añadimos un fichero readme.txt a la carpeta.
 
-https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P2/readme%20para%20crontab.png
+![readme](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P2/readme%20para%20crontab.png)
 
 Como faltaba poco para que llegara la hora del crontab, espero a ver si funciona (también se puede cambiar el /etc/crontab para que los minutos se cumplan en breve, pero no fue necesario)
 
-https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P2/funcionamiento%20correcto%20crontab.png
+![Todo funciona](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P2/funcionamiento%20correcto%20crontab.png)
 
 Y como se puede ver, se copió correctamente.
