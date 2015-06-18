@@ -17,7 +17,10 @@ Se instala con ```apt-get install siege```. He tenido problemas intentando insta
 Se ejecuta con ```siege -b -c 15 -t60S http://192.168.1.X/index.html```
 Donde lo hemos ejecutado con 15 usuarios concurrentes durante 60 segundos.
 
+![Una ejecución de Siege](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/siege3.png?raw=true)
+
 ##OpenWebLoad
 Se instala con ```apt-get install openload``` 
 Se ejecuta con ```openload -l 60 http://192.168.1.X/index.html 15```
 Donde lo hemos ejecutado con 15 usuarios concurrentes durante 60 segundos.
+![Una ejecución de OpenWebLoad](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/openload.png)
