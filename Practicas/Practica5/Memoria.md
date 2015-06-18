@@ -44,6 +44,6 @@ Para una comprobación más práctica, desbloqueamos las tablas en el maestro e 
 
 ![Desbloqueamos tablas](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P5/unlock.png)
 ![Insertamos tuplas](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P5/insercionprueba.png?raw=true)
-![¡Funciona!](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P5/comprobaci%C3%B3n.png)
+![¡Funciona!](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P5/comprobacion.png)
 
 Todo funciona y nuestras bases de datos están listas para utilizarse. 
