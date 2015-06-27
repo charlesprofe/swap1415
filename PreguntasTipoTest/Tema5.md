@@ -5,4 +5,4 @@
 3. Rendimiento (en bits/s)
 4. Conexiones por segundo.
 
-Respuesta correcta: **1**
+Respuesta correcta: **4**
