@@ -24,3 +24,27 @@ Se instala con ```apt-get install openload```
 Se ejecuta con ```openload -l 60 http://192.168.1.X/index.html 15```
 Donde lo hemos ejecutado con 15 usuarios concurrentes durante 60 segundos.
 ![Una ejecución de OpenWebLoad](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/openload.png)
+
+##Ejecución del Script
+El script que utilicé fue creado por **@agarciamontoro**, y me ayudó a automatizar el proceso manual que he descrito hasta ahora.
+
+Mis resultados son los siguientes:
+###Apache Benchmark
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ab_/ab_Requests.per.second.png
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ab_/ab_Time.per.request.png
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ab_/ab_Time.taken.for.tests.png
+###OpenWebLoad
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ol_/ol_Average.response.time.png)
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ol_/ol_Maximun.response.time.png)
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ol_/ol_Transactions.per.second.png)
+###Siege
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/si_/si_Availability.png)
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/si_/si_Elapsed.time.png)
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/si_/si_Failed.transactions.png)
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/si_/si_Longest.transaction.png)
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/si_/si_Response.time.png)
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/si_/si_Transaction.rate.png)
+
+El resultado no es el resultado esperado. Esperaría obtener mejores medidas de las opciones con balanceador, pero no es el caso. He lanzado los test varias veces y siempre he tenido el mismo resultado.
+
+Mi opinión es que la página del test era demasiado ligera y la granja no llega a saturarse nunca, lo que crea pequeños retrasos en el propio procesamiento de los balanceadores.
