@@ -30,9 +30,9 @@ El script que utilicé fue creado por **@agarciamontoro**, y me ayudó a automat
 
 Mis resultados son los siguientes:
 ###Apache Benchmark
-![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ab_/ab_Requests.per.second.png
-![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ab_/ab_Time.per.request.png
-![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ab_/ab_Time.taken.for.tests.png
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ab_/ab_Requests.per.second.png)
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ab_/ab_Time.per.request.png)
+![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ab_/ab_Time.taken.for.tests.png)
 ###OpenWebLoad
 ![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ol_/ol_Average.response.time.png)
 ![](https://github.com/cparadela/swap1415/blob/master/Practicas/IMG/P4/Graficas/ol_/ol_Maximun.response.time.png)
@@ -47,4 +47,6 @@ Mis resultados son los siguientes:
 
 El resultado no es el resultado esperado. Esperaría obtener mejores medidas de las opciones con balanceador, pero no es el caso. He lanzado los test varias veces y siempre he tenido el mismo resultado.
 
-Mi opinión es que la página del test era demasiado ligera y la granja no llega a saturarse nunca, lo que crea pequeños retrasos en el propio procesamiento de los balanceadores.
+Mi opinión es que la página del test era demasiado ligera y la granja no se saturó en prácticamente ningún momento*, lo que crea pequeños retrasos en el propio procesamiento de los balanceadores que se van acumulando (lo que el propio servidor no tarda mucho en servir).
+
+*Quizá hubo alguna saturación muy puntual, basándome en la gráfica de Siege de "Longest Transaction" pues en la barra de servidor único se detectan tiempos máximos altos.
