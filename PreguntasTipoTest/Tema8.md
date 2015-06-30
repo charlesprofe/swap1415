@@ -1,5 +1,5 @@
 #Tema 8
-##¿Qué tipo de contenido se servirá más rápido principalmente al instalar gran cantidad de chaché?
+##¿Qué tipo de contenido se servirá más rápido principalmente al instalar gran cantidad de caché?
 1. El contenido estático.
 2. El contenido dinámico.
 3. El contenido minino.
